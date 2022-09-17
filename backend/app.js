@@ -65,6 +65,18 @@ app.get("/list", (req, res) => {
     });
 });
 
+app.get("/random", (req, res) => {
+  Recipe.sync({
+    force: false,
+  })
+    .then(() => {
+      return Recipe.findAll({ order: Sequelize.literal('random()'), limit: 1 });
+    })
+    .then((recipe) => {
+      res.send(recipe);
+    });
+});
+
 app.post("/add", (req, res) => {
   Recipe.sync({
     force: false,
