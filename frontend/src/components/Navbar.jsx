@@ -17,6 +17,8 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
+import logo from '../assets/logo.png'
+
 const LinkItem = ({ href, children }) => {
   return (
     <Link
@@ -25,6 +27,7 @@ const LinkItem = ({ href, children }) => {
       _hover={{
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
+        color: 'black'
       }}
       href={href}
     >
@@ -40,9 +43,9 @@ const Navbar = () => {
     <>
       <Box bg="green.400" css={{ backdropFilter: "blur(10px)", color: 'white' }} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Heading as="h1" size="lg">
-            Logo
-          </Heading>
+          <a href = '/'>
+            <Avatar name = 'yes' src = {logo} alt = 'logo'/>
+          </a>
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
