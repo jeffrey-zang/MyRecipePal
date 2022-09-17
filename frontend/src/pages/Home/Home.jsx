@@ -11,11 +11,11 @@ const Home = () => {
   return (
     <>
     <div className = 'container'>
-        Title
+        MyRecipePal
         <Center><img className = 'logo' src = {logo} alt = 'logo'></img></Center>
         <h1 style = {{fontSize: 'max(3vw, 30px)'}}>Change your life through diet</h1>
         <Center>
-            <Button className = 'btn' colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
+            <Button className = 'btn' onClick={() => {window.location.href='/findrecipe'}} colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
         </Center>
         <Button className = 'btn' colorScheme='green' onClick={() => {window.location.href='/addrecipe'}}>Post a Recipe</Button>
     </div>

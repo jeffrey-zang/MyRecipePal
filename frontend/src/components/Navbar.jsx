@@ -66,6 +66,8 @@ const Navbar = () => {
 
               <LinkItem href="/recipes">Browse</LinkItem>
 
+              <LinkItem href="/findrecipe">Find a Recipe</LinkItem>
+
               <Menu>
                 <MenuButton
                   as={Button}
