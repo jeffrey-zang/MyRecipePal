@@ -77,6 +77,7 @@ const RandomRecipe = () => {
           </VStack>
         </Box>
       </VStack>
+      <BottomNavbar/>
     </>
   );
 };
