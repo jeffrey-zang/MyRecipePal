@@ -28,6 +28,8 @@ const AddRecipe = () => {
     const handleInputChange = (e) => setInput(e.target.value)
 
     const isError = input === ''
+
+    // let 
   
     return (
         <>
@@ -43,6 +45,7 @@ const AddRecipe = () => {
                     min={1}
                     keepWithinRange={true}
                     clampValueOnBlur={false}
+                    id = 'servings'
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -56,11 +59,11 @@ const AddRecipe = () => {
                 
                 <Center>
                 <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                    <Checkbox>Vegan</Checkbox>
-                    <Checkbox>Kosher</Checkbox>
-                    <Checkbox>Halal</Checkbox>
-                    <Checkbox>Gluten Intolerance</Checkbox>
-                    <Checkbox>Lactose Intolerance</Checkbox>
+                    <Checkbox className = 'check'>Vegan</Checkbox>
+                    <Checkbox className = 'check'>Kosher</Checkbox>
+                    <Checkbox className = 'check'>Halal</Checkbox>
+                    <Checkbox className = 'check'>Gluten Intolerance</Checkbox>
+                    <Checkbox className = 'check'>Lactose Intolerance</Checkbox>
                 </Stack>
                 </Center>
 
@@ -68,15 +71,15 @@ const AddRecipe = () => {
                 
                 <Center>
                 <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                    <Checkbox>Peanut Butter</Checkbox>
-                    <Checkbox>Shellfish</Checkbox>
-                    <Checkbox>Tree nuts</Checkbox>
-                    <Checkbox>Eggs</Checkbox>
-                    <Checkbox>Fish</Checkbox>
+                    <Checkbox className = 'check'>Peanut Butter</Checkbox>
+                    <Checkbox className = 'check'>Shellfish</Checkbox>
+                    <Checkbox className = 'check'>Tree nuts</Checkbox>
+                    <Checkbox className = 'check'>Eggs</Checkbox>
+                    <Checkbox className = 'check'>Fish</Checkbox>
                 </Stack>
                 </Center>
 
-                <Accordion defaultIndex={[0]} width = '60%' marginLeft ='auto' marginRight='auto' marginTop = '25px' allowToggle>
+                {/* <Accordion defaultIndex={[0]} width = '60%' marginLeft ='auto' marginRight='auto' marginTop = '25px' allowToggle>
                     <AccordionItem>
                         <h2>
                         <AccordionButton>
@@ -87,82 +90,98 @@ const AddRecipe = () => {
                         </AccordionButton>
                         </h2>
 
-                        <AccordionPanel >
-                            <FormControl>
-                            <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Calories</FormLabel>
-                            <NumberInput 
-                            defaultValue={200} 
-                            min={1} 
-                            max={2000}
-                            >
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                </NumberInputStepper>
-                            </NumberInput>                
-                            </FormControl>
-                        </AccordionPanel>
+                        <AccordionPanel > */}
+                <div style = {{width: '60%', marginLeft: 'auto', marginRight: 'auto'}}>
 
-                        <AccordionPanel >
-                            <FormControl>
-                            <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Protein (grams)</FormLabel>
-                            <NumberInput 
-                            defaultValue={10} 
-                            min={0} 
-                            max={175}
-                            >
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                </NumberInputStepper>
-                            </NumberInput>                
-                            </FormControl>
-                        </AccordionPanel>
+                <FormControl>
+                <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Calories</FormLabel>
+                <NumberInput 
+                defaultValue={200} 
+                min={0} 
+                max={2000}
+                id = 'cals'
+                >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                    </NumberInputStepper>
+                </NumberInput>                
+                </FormControl>
+                        {/* </AccordionPanel> */}
 
-                        <AccordionPanel >
-                            <FormControl>
-                            <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Carbohydrates (grams)</FormLabel>
-                            <NumberInput 
-                            defaultValue={20} 
-                            min={0} 
-                            max={325}
-                            >
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                </NumberInputStepper>
-                            </NumberInput>                
-                            </FormControl>
-                        </AccordionPanel>
+                        {/* <AccordionPanel > */}
+                <FormControl>
+                <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Protein (grams)</FormLabel>
+                <NumberInput 
+                defaultValue={10} 
+                min={0} 
+                max={175}
+                id = 'proteins'
+                >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                    </NumberInputStepper>
+                </NumberInput>                
+                </FormControl>
+                        {/* </AccordionPanel> */}
 
-                        <AccordionPanel >
-                            <FormControl>
-                            <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Cooking Time (minutes)</FormLabel>
-                            <NumberInput 
-                            defaultValue={30} 
-                            min={15} 
-                            max={300}
-                            >
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                </NumberInputStepper>
-                            </NumberInput>                
-                            </FormControl>
-                        </AccordionPanel>
+                        {/* <AccordionPanel > */}
+                <FormControl>
+                <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Carbohydrates (grams)</FormLabel>
+                <NumberInput 
+                defaultValue={20} 
+                min={0} 
+                max={325}
+                id = 'carbs'
+                >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                    </NumberInputStepper>
+                </NumberInput>                
+                </FormControl>
+                        {/* </AccordionPanel> */}
 
-                    </AccordionItem>
-                </Accordion>
+                        {/* <AccordionPanel > */}
+                <FormControl>
+                <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Maximum Cooking Time (minutes)</FormLabel>
+                <NumberInput 
+                defaultValue={30} 
+                min={15} 
+                max={300}
+                id = 'time'
+                >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                    </NumberInputStepper>
+                </NumberInput>                
+                </FormControl>
+                        {/* </AccordionPanel> */}
+
+                    {/* </AccordionItem>
+                </Accordion> */}
+                </div>
 
                 <Center>
                     <Button
                         mt={4}
                         colorScheme='teal'
                         type='submit'
+                        marginBottom='25px'
+                        onClick = {() => {
+                            let servings = document.getElementById("servings").value;
+                            let checkmarks = document.getElementsByClassName("check") // use foreach for this
+                            let cals = document.getElementById('cals')
+                            let proteins = document.getElementById('proteins')
+                            let carbs = document.getElementById('carbs')
+                            let time = document.getElementById('time')
+                        }}
                         >
                         Submit
                     </Button>
