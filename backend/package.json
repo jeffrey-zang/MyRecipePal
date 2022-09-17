@@ -1,6 +1,17 @@
 {
+  "name": "backend",
+  "main": "app.js",
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
   "dependencies": {
+    "express": "^4.18.1",
     "pg": "latest",
     "prompt": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

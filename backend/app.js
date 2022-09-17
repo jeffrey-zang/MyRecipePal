@@ -1,32 +1,39 @@
-const { Client } = require("pg");
+const express = require("express"); //Set up our main function variable for calling the Express module and require it as a dependency
+const app = express(); //Object returned by express()
 
-(async () => {
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    application_name: "$ docs_quickstart_node"
-  });
+//Express needs a port and host for its output. We'll define these here and change them later.
+const port = 3000;
+const host = "localhost";
 
-  const statements = [
-    // CREATE the messages table
-    "CREATE TABLE IF NOT EXISTS messages (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), message STRING)",
-    // INSERT a row into the messages table
-    "INSERT INTO messages (message) VALUES ('Hello world!')",
-    // SELECT a row from the messages table
-    "SELECT message FROM messages",
-  ];
+// const { Client } = require("pg");
 
-  try {
-    // Connect to CockroachDB
-    await client.connect();
-    for (let n = 0; n < statements.length; n++) {
-      let result = await client.query(statements[n]);
-      if (result.rows[0]) { console.log(result.rows[0].message); }
-    }
-    await client.end();
-  } catch (err) {
-    console.log(`error connecting: ${err}`);
-  }
+// (async () => {
+//   const client = new Client({
+//     connectionString: process.env.DATABASE_URL,
+//     application_name: "$ docs_quickstart_node"
+//   });
 
-  // Exit program
-  process.exit();
-})().catch((err) => console.log(err.stack));
+//   const statements = [
+//     // CREATE the messages table
+//     "CREATE TABLE IF NOT EXISTS messages (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), message STRING)",
+//     // INSERT a row into the messages table
+//     "INSERT INTO messages (message) VALUES ('Hello world!')",
+//     // SELECT a row from the messages table
+//     "SELECT message FROM messages",
+//   ];
+
+//   try {
+//     // Connect to CockroachDB
+//     await client.connect();
+//     for (let n = 0; n < statements.length; n++) {
+//       let result = await client.query(statements[n]);
+//       if (result.rows[0]) { console.log(result.rows[0].message); }
+//     }
+//     await client.end();
+//   } catch (err) {
+//     console.log(`error connecting: ${err}`);
+//   }
+
+//   // Exit program
+//   process.exit();
+// })().catch((err) => console.log(err.stack));
