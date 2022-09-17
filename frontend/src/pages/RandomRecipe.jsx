@@ -13,8 +13,10 @@ import {
 import React, { useEffect, useState, useRef } from "react";
 import autosize from "autosize";
 import BottomNavbar from "../components/BottomNavbar";
+import { useDisclosure, Fade, ScaleFade, Slide, SlideFade } from '@chakra-ui/react'
 
 const RandomRecipe = () => {
+  const { isOpen, onToggle } = useDisclosure();
   const InstructionsRef = useRef();
   const [recipe, setRecipe] = useState();
   const [change, setChange] = useState(false);
@@ -29,6 +31,7 @@ const RandomRecipe = () => {
       return response.json()
     }).then((data) => {
       setRecipe(data[0]);
+      onToggle()
     })
   },[change])
   if (!recipe){
@@ -37,9 +40,12 @@ const RandomRecipe = () => {
 
   const clickNewRecipe = () => {
     setChange((cur) => !cur)
+    onToggle();
   }
+  
   return (
     <>
+      <SlideFade in={isOpen} offsetY='20px'>
       <VStack mt={20} h="full">
         <Heading>Recipe: {recipe.name}</Heading>
         <Divider pt={3} width="2xl" />
@@ -80,7 +86,9 @@ const RandomRecipe = () => {
           </VStack>
         </Box>
       </VStack>
+      </SlideFade>
       <BottomNavbar clickNewRecipe={clickNewRecipe}/>
+      
     </>
   );
 };
