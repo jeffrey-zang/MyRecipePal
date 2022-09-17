@@ -5,6 +5,7 @@ import FindRecipe from "./pages/FindRecipe/FindRecipe.jsx";
 import Navbar from "./components/Navbar";
 import Recipes from './pages/Recipes.jsx'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
+import NotFound from './pages/NotFound'
 
 function App() {
   let Component 
@@ -21,6 +22,9 @@ function App() {
     case '/findrecipe':
       Component = FindRecipe
       break  
+    default:
+      Component = NotFound
+      break
   }
 
   return (
