@@ -1,8 +1,16 @@
 import {
+  Avatar,
   Box,
+  Button,
+  Center,
   Flex,
   Heading,
   Link,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
   Stack,
   Text,
   useColorModeValue,
@@ -25,6 +33,8 @@ const LinkItem = ({ href, children }) => {
   );
 };
 
+const searchBar = () => {};
+
 const Navbar = () => {
   return (
     <>
@@ -39,6 +49,40 @@ const Navbar = () => {
               <LinkItem href="/home">
                 <Text>Home</Text>
               </LinkItem>
+
+              <LinkItem href="/recipes">Browse</LinkItem>
+
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                >
+                  <Avatar
+                    size={"sm"}
+                    src={"https://avatars.dicebear.com/api/male/username.svg"}
+                  />
+                </MenuButton>
+                <MenuList alignItems={"center"}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={"2xl"}
+                      src={"https://avatars.dicebear.com/api/male/username.svg"}
+                    />
+                  </Center>
+                  <Center>
+                    <p>Username</p>
+                  </Center>
+                  <br />
+                  <MenuDivider />
+                  <MenuItem>Your Favourites</MenuItem>
+                  <MenuItem> Account Settings</MenuItem>
+                  <MenuItem>Logout</MenuItem>
+                </MenuList>
+              </Menu>
             </Stack>
           </Flex>
         </Flex>
