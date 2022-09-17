@@ -23,6 +23,20 @@ const sequelize = new Sequelize({
   },
 });
 
+const Recipe = sequelize.define("recipe", {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  name: {
+    type: Sequelize.TEXT,
+  },
+  recipeContent: {
+    type: Sequelize.JSON,
+  },
+});
+
 // Creates people table
 const User = sequelize.define("user", {
   id: {
@@ -40,26 +54,26 @@ const User = sequelize.define("user", {
 
 // force: true -> delete whole table, and recreate new one. force: false, just alters (?)
 app.get("/list", (req, res) => {
-  User.sync({
+  Recipe.sync({
     force: false,
   })
     .then(() => {
-      return User.findAll();
+      return Recipe.findAll();
     })
-    .then((user) => {
-      res.send(user);
+    .then((recipe) => {
+      res.send(recipe);
     });
 });
 
 app.post("/add", (req, res) => {
-  User.sync({
+  Recipe.sync({
     force: false,
   })
     .then(() => {
-      return User.bulkCreate([
+      return Recipe.bulkCreate([
         {
-          username: req.body.username,
-          password: req.body.password,
+          name: req.body.name,
+          recipeContent: req.body.recipeContent,
         },
       ]);
     })
@@ -67,12 +81,12 @@ app.post("/add", (req, res) => {
       console.error("error:- ", err.message);
     });
 
-  res.send("Users created with Name:- " + req.body.username);
+  res.send("Recipes created with Name:- " + req.body.name);
 });
 
 app.post("/delete", (req, res) => {
-  User.drop();
-  res.send("Users table dropped");
+  Recipe.drop();
+  res.send("Recipe table dropped");
 });
 
 app.listen(port, host, () => {
