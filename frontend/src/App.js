@@ -1,28 +1,32 @@
-import React from 'react'
+import React from "react";
 
 import Home from "./pages/Home/Home.jsx";
 import Navbar from "./components/Navbar";
-import Recipes from './pages/Recipes.jsx'
-import AddRecipe from './pages/AddRecipe/AddRecipe'
+import Recipes from "./pages/Recipes.jsx";
+import AddRecipe from "./pages/AddRecipe/AddRecipe";
+import RandomRecipe from "./pages/RandomRecipe.jsx";
 
 function App() {
-  let Component 
+  let Component;
   switch (window.location.pathname) {
-    case '/':
-      Component = Home
-      break
-    case '/recipes':
-      Component = Recipes
-      break
-    case '/addrecipe':
-      Component = AddRecipe
-      break
+    case "/":
+      Component = Home;
+      break;
+    case "/recipes":
+      Component = Recipes;
+      break;
+    case "/addrecipe":
+      Component = AddRecipe;
+      break;
+    case "/recipe":
+      Component = RandomRecipe;
+      break;
   }
 
   return (
     <>
-    <Navbar/>
-    <Component/>
+      <Navbar />
+      <Component />
     </>
   );
 }
