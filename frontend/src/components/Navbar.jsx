@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import AddRecipe from "./AddRecipe";
+import AddRecipe from "./AddRecipeButton.jsx";
 import SearchBar from "./SearchBar";
 
 import logo from '../assets/logo.png'
@@ -61,13 +61,10 @@ const Navbar = () => {
               <AddRecipe/>
 
               <LinkItem href="/">
-                <Text>
                   Home
-                </Text>
               </LinkItem>
 
               <LinkItem href="/recipes">Browse</LinkItem>
-
 
               <Menu>
                 <MenuButton

@@ -3,6 +3,7 @@ import React from 'react'
 import Home from "./pages/Home/Home.jsx";
 import Navbar from "./components/Navbar";
 import Recipes from './pages/Recipes.jsx'
+import AddRecipe from './pages/AddRecipe/AddRecipe'
 
 function App() {
   let Component 
@@ -12,6 +13,9 @@ function App() {
       break
     case '/recipes':
       Component = Recipes
+      break
+    case '/addrecipe':
+      Component = AddRecipe
       break
   }
 
