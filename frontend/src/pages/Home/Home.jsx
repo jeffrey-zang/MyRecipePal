@@ -13,7 +13,7 @@ const Home = () => {
     <div className = 'container'>
         MyRecipePal
         <Center><img className = 'logo' src = {logo} alt = 'logo'></img></Center>
-        <h1 style = {{fontSize: 'max(3vw, 30px)'}}>Change your life through diet</h1>
+        <h1 style = {{fontSize: 'max(3vw, 30px)'}}>Unlock your inner chef</h1>
         <Center>
             <Button className = 'btn' onClick={() => {window.location.href='/findrecipe'}} colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
         </Center>

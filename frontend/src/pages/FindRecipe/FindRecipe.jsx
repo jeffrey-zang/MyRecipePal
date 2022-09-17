@@ -183,7 +183,7 @@ const AddRecipe = () => {
                             let time = document.getElementById('time')
                         }}
                         >
-                        Submit
+                        Give me my recipe!
                     </Button>
                 </Center>
 
