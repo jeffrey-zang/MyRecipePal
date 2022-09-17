@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
 import autosize from "autosize";
+import BottomNavbar from "../components/BottomNavbar";
 
 const RandomRecipe = () => {
   const InstructionsRef = useRef();

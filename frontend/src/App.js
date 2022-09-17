@@ -6,6 +6,7 @@ import Recipes from "./pages/Recipes.jsx";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import RandomRecipe from "./pages/RandomRecipe.jsx";
 
+
 function App() {
   let Component;
   switch (window.location.pathname) {
