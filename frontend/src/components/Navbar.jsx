@@ -38,7 +38,7 @@ const searchBar = () => {};
 const Navbar = () => {
   return (
     <>
-      <Box bg="green.400" css={{ backdropFilter: "blur(10px)" }} px={4}>
+      <Box bg="green.400" css={{ backdropFilter: "blur(10px)", color: '#fff' }} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Heading as="h1" size="lg">
             Logo
@@ -46,7 +46,7 @@ const Navbar = () => {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <LinkItem href="/home">
+              <LinkItem href="/">
                 <Text>Home</Text>
               </LinkItem>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
                     src={"https://avatars.dicebear.com/api/male/username.svg"}
                   />
                 </MenuButton>
-                <MenuList alignItems={"center"}>
+                <MenuList alignItems={"center"} color='black'>
                   <br />
                   <Center>
                     <Avatar
@@ -80,7 +80,7 @@ const Navbar = () => {
                   <MenuDivider />
                   <MenuItem>Your Favourites</MenuItem>
                   <MenuItem> Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem>Log Out</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
