@@ -7,12 +7,11 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-const BottomNavbar = () => {
+const BottomNavbar = ({clickNewRecipe}) => {
     const [windowDimenion, detectHW] = useState({
         winWidth: window.innerWidth,
         winHeight: window.innerHeight,
     })
-
     const detectSize = () => {
         detectHW({
         winWidth: window.innerWidth,
@@ -38,7 +37,7 @@ const BottomNavbar = () => {
                 >
                     <Button class="btn btn-primary" style={{backgroundColor: "#48BB78","width": windowDimenion.winWidth / 2 + "px"}}>Save to favourites</Button>
 
-                    <Button class="btn btn-primary" style={{backgroundColor: "#48BB78","width": windowDimenion.winWidth / 2 - 25 + "px"}}>Give me a new recipe!</Button>
+                    <Button class="btn btn-primary" onClick={clickNewRecipe} style={{backgroundColor: "#48BB78","width": windowDimenion.winWidth / 2 - 25 + "px"}}>Give me a new recipe!</Button>
                 </Nav>
             </Container>
         </Navbar>

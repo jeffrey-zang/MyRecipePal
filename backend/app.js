@@ -66,6 +66,8 @@ app.get("/list", (req, res) => {
 });
 
 app.get("/random", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   Recipe.sync({
     force: false,
   })
