@@ -47,7 +47,9 @@ const Navbar = () => {
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <LinkItem href="/">
-                <Text>Home</Text>
+                <Text>
+                  Home
+                </Text>
               </LinkItem>
 
               <LinkItem href="/recipes">Browse</LinkItem>
