@@ -10,24 +10,38 @@ import {
   UnorderedList,
   VStack,
 } from "@chakra-ui/react";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import autosize from "autosize";
 import BottomNavbar from "../components/BottomNavbar";
 
 const RandomRecipe = () => {
   const InstructionsRef = useRef();
-
+  const [recipe, setRecipe] = useState();
+  const [change, setChange] = useState(false);
   useEffect(() => {
     autosize(InstructionsRef.current);
     return () => {
       autosize.destroy(InstructionsRef.current);
     };
   }, []);
+  useEffect(()=> {
+    fetch('http://localhost:3001/random', {mode: 'cors'}).then((response) => {
+      return response.json()
+    }).then((data) => {
+      setRecipe(data[0]);
+    })
+  },[change])
+  if (!recipe){
+    return <></>
+  }
 
+  const clickNewRecipe = () => {
+    setChange((cur) => !cur)
+  }
   return (
     <>
       <VStack mt={20} h="full">
-        <Heading>Recipe:</Heading>
+        <Heading>Recipe: {recipe.name}</Heading>
         <Divider pt={3} width="2xl" />
         <Box
           w="2xl"
@@ -61,23 +75,12 @@ const RandomRecipe = () => {
               w="100%"
               minRows={1}
               autoGrow={2}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-              culpa voluptatibus asperiores enim natus pariatur quis, recusandae
-              veritatis! Dolor impedit velit repudiandae cum repellat neque
-              corrupti odio quisquam ipsa vero. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Ratione enim commodi fugiat delectus
-              nisi, incidunt officiis sint quod impedit! Ratione cupiditate
-              voluptatum minima facilis amet aspernatur, saepe eos sunt
-              perspiciatis. Lorem ipsum, dolor sit amet consectetur adipisicing
-              elit. Architecto repellat atque laboriosam hic cupiditate iusto
-              possimus alias esse porro itaque! Temporibus odio modi ipsum
-              explicabo! Neque consequuntur ex nisi quisquam.
+            >recipe.instructions
             </Textarea>
           </VStack>
         </Box>
       </VStack>
-      <BottomNavbar/>
+      <BottomNavbar clickNewRecipe={clickNewRecipe}/>
     </>
   );
 };
