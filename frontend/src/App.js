@@ -1,5 +1,5 @@
 import React from "react";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home/Home.jsx";
 import Navbar from "./components/Navbar";
 import Recipes from "./pages/Recipes.jsx";
