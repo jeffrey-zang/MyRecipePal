@@ -33,7 +33,7 @@ element {
 }
 
 .btn {
-    font-size: 25px;
+    font-size: 30px !important;
     padding: 25px 15px;
 }
 
