@@ -52,7 +52,9 @@ const Navbar = () => {
               <SearchBar />
 
               <LinkItem href="/">
-                <Text>Home</Text>
+                <Text>
+                  Home
+                </Text>
               </LinkItem>
 
               <LinkItem href="/recipes">Browse</LinkItem>
