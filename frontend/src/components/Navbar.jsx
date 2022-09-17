@@ -38,7 +38,7 @@ const searchBar = () => {};
 const Navbar = () => {
   return (
     <>
-      <Box bg="green.400" css={{ backdropFilter: "blur(10px)", color: '#fff' }} px={4}>
+      <Box bg="white" css={{ backdropFilter: "blur(10px)", color: '#000' }} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Heading as="h1" size="lg">
             Logo
