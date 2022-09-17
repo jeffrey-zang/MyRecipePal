@@ -23,7 +23,6 @@ const AddRecipe = () => {
                 <Center>
                     <Input     
                         errorBorderColor='red.300'
-                        placeholder='Here is a sample placeholder'
                         width = '40%' 
                         borderColor='green.400'
                         onChange={handleInputChange}
