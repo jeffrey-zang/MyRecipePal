@@ -17,7 +17,7 @@ const Home = () => {
         <Center>
             <Button className = 'btn' colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
         </Center>
-        <Button className = 'btn' colorScheme='green'>Post a Recipe</Button>
+        <Button className = 'btn' colorScheme='green' onClick={() => {window.location.href='/addrecipe'}}>Post a Recipe</Button>
     </div>
     <div className = 'container' style = {{padding: '0px 80px'}}>
         Our inspiration
