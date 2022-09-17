@@ -1,12 +1,12 @@
 import React from 'react'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home/Home.jsx";
 import FindRecipe from "./pages/FindRecipe/FindRecipe.jsx";
 import Navbar from "./components/Navbar";
 import Recipes from './pages/Recipes.jsx'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import NotFound from './pages/NotFound'
-
+import RandomRecipe from "./pages/RandomRecipe.jsx";
 function App() {
   let Component 
   switch (window.location.pathname) {
@@ -22,6 +22,9 @@ function App() {
     case '/findrecipe':
       Component = FindRecipe
       break  
+    case "/recipe":
+      Component = RandomRecipe;
+      break;
     default:
       Component = NotFound
       break
