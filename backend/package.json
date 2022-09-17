@@ -3,8 +3,8 @@
   "main": "app.js",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "node app.js",
-    "nodemon": "nodemon app.js"
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
