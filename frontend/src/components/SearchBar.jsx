@@ -12,13 +12,26 @@ const SearchBar = () => {
     setRecipeInput(e.target.value);
   };
 
+  const clearInput = () => {
+    console.log("reached");
+
+    setFilteredRecipes([]);
+    setRecipeInput("");
+  };
+
   return (
     <>
       <Stack spacing={4}>
         <InputGroup>
           <InputLeftElement
             pointerEvents="none"
-            children={recipeInput.length === 0 ? <SearchIcon /> : <CloseIcon />}
+            children={
+              recipeInput.length === 0 ? (
+                <SearchIcon />
+              ) : (
+                <CloseIcon onClick={clearInput} />
+              )
+            }
           />
           <Input
             type="text"

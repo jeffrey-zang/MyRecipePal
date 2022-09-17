@@ -16,6 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
+import AddRecipe from "./AddRecipe";
 import SearchBar from "./SearchBar";
 
 const LinkItem = ({ href, children }) => {
@@ -25,7 +26,7 @@ const LinkItem = ({ href, children }) => {
       rounded={"md"}
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
+        bg: useColorModeValue("gray"),
       }}
       href={href}
     >
@@ -51,10 +52,10 @@ const Navbar = () => {
             <Stack direction={"row"} spacing={7}>
               <SearchBar />
 
+              <AddRecipe />
+
               <LinkItem href="/">
-                <Text>
-                  Home
-                </Text>
+                <Text>Home</Text>
               </LinkItem>
 
               <LinkItem href="/recipes">Browse</LinkItem>
