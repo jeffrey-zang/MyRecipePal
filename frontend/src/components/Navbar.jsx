@@ -16,6 +16,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
+import AddRecipe from "./AddRecipe";
+import SearchBar from "./SearchBar";
 
 import logo from '../assets/logo.png'
 
@@ -41,7 +43,11 @@ const searchBar = () => {};
 const Navbar = () => {
   return (
     <>
-      <Box bg="green.400" css={{ backdropFilter: "blur(10px)", color: 'white' }} px={4}>
+      <Box
+        bg="green.400"
+        css={{ backdropFilter: "blur(10px)", color: "#fff" }}
+        px={4}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <a href = '/'>
             <Avatar name = 'yes' src = {logo} alt = 'logo'/>
@@ -49,6 +55,11 @@ const Navbar = () => {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
+
+              <SearchBar />
+
+              <AddRecipe/>
+
               <LinkItem href="/">
                 <Text>
                   Home
@@ -56,6 +67,7 @@ const Navbar = () => {
               </LinkItem>
 
               <LinkItem href="/recipes">Browse</LinkItem>
+
 
               <Menu>
                 <MenuButton
@@ -70,7 +82,7 @@ const Navbar = () => {
                     src={"https://avatars.dicebear.com/api/male/username.svg"}
                   />
                 </MenuButton>
-                <MenuList alignItems={"center"} color='black'>
+                <MenuList alignItems={"center"} color="black">
                   <br />
                   <Center>
                     <Avatar
