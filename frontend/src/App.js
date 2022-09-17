@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Home from "./pages/Home.jsx";
+import Home from "./pages/Home/Home.jsx";
 import Navbar from "./components/Navbar";
 import Recipes from './pages/Recipes.jsx'
 
