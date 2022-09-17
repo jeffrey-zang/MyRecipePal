@@ -1,9 +1,83 @@
-const express = require("express"); //Set up our main function variable for calling the Express module and require it as a dependency
-const app = express(); //Object returned by express()
+const express = require("express");
+const app = express();
 
-//Express needs a port and host for its output. We'll define these here and change them later.
-const port = 3000;
-const host = "localhost";
+const port = 3001;
+const host = "127.0.0.1";
+
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+
+const Sequelize = require("sequelize-cockroachdb");
+
+const sequelize = new Sequelize({
+  dialect: "postgres",
+  username: "jeffrey",
+  password: "EJfMAcrrb0CZlPhrvumWKw",
+  host: "free-tier11.gcp-us-east1.cockroachlabs.cloud",
+  port: 26257,
+  database: "solid-sage-1929.defaultdb",
+  logging: false,
+  dialectOptions: {
+    ssl: {},
+  },
+});
+
+// Creates people table
+const User = sequelize.define("user", {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  username: {
+    type: Sequelize.TEXT,
+  },
+  password: {
+    type: Sequelize.INTEGER,
+  },
+});
+
+// force: true -> delete whole table, and recreate new one. force: false, just alters (?)
+app.get("/list", (req, res) => {
+  User.sync({
+    force: false,
+  })
+    .then(() => {
+      return User.findAll();
+    })
+    .then((user) => {
+      res.send(user);
+    });
+});
+
+app.post("/add", (req, res) => {
+  User.sync({
+    force: false,
+  })
+    .then(() => {
+      return User.bulkCreate([
+        {
+          username: req.body.username,
+          password: req.body.password,
+        },
+      ]);
+    })
+    .catch((err) => {
+      console.error("error:- ", err.message);
+    });
+
+  res.send("Users created with Name:- " + req.body.username);
+});
+
+app.post("/delete", (req, res) => {
+  User.drop();
+  res.send("Users table dropped");
+});
+
+app.listen(port, host, () => {
+  console.log(`Server started at host: ${host} port${port}`);
+});
 
 // const { Client } = require("pg");
 
