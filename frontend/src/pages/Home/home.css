@@ -8,7 +8,7 @@ element {
     --accent: #48BB78;
 }
 
-img {
+.logo {
     border-radius: 50%;
     width: max(15%, 150px);
     margin-left: auto;
@@ -24,9 +24,31 @@ img {
     text-align: center;
     font-size: max(5vw, 60px);
     height: 91vh;
+    max-width: none;
+}
+
+.spaced {
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn {
     font-size: 25px;
     padding: 25px 15px;
+}
+
+text {
+    width: 60%;
+}
+
+.img {
+    width: max(30%, 250px);
+    height: auto;
+    border: 3px solid black;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.text {
+    font-size: max(1.5vw, 15px)
 }
