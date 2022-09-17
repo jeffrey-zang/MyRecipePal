@@ -7,6 +7,9 @@ import Recipes from './pages/Recipes.jsx'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import NotFound from './pages/NotFound'
 import RandomRecipe from "./pages/RandomRecipe.jsx";
+
+import Footer from './components/Footer/Footer.jsx'
+
 function App() {
   let Component 
   switch (window.location.pathname) {
@@ -34,6 +37,7 @@ function App() {
     <>
     <Navbar/>
     <Component/>
+    <Footer/>
     </>
   );
 }

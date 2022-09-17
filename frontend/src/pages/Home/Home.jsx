@@ -19,7 +19,7 @@ const Home = () => {
         </Center>
         <Button size = 'lg' colorScheme='green' onClick={() => {window.location.href='/addrecipe'}}>Post a Recipe</Button>
     </div>
-    <div className = 'container' style = {{padding: '0px 80px', color: '#fff', marginBottom: '50px'}}>
+    <div className = 'container' style = {{padding: '0px 80px', color: '#fff'}}>
         Our Inspiration
         <p className = 'text'>
             As university students, we all understand that one of the biggest struggles of living by yourself is cooking food. We wanted to make it easy to find and craft new recipes, while still eating healthy. 
