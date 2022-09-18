@@ -10,12 +10,16 @@ import {
   UnorderedList,
   VStack,
 } from "@chakra-ui/react";
+import RecipeDisplay from "../components/RecipeDisplay";
 import React, { useEffect, useState, useRef } from "react";
 import autosize from "autosize";
 import BottomNavbar from "../components/BottomNavbar";
 import { useDisclosure, Fade, ScaleFade, Slide, SlideFade } from '@chakra-ui/react'
+import {useLocation} from 'react-router-dom';
 
 const RandomRecipe = () => {
+  const location = useLocation();
+  console.log(location.state.name)
   const { isOpen, onToggle } = useDisclosure();
   const InstructionsRef = useRef();
   const [recipe, setRecipe] = useState();
@@ -27,18 +31,17 @@ const RandomRecipe = () => {
     };
   }, []);
   useEffect(()=> {
-    fetch('http://localhost:3001/random', {mode: 'cors'}).then((response) => {
+    fetch('http://localhost:3001/random', {mode: 'cors',method: 'POST'}).then((response) => {
       return response.json()
     }).then((data) => {
       setRecipe(data[0]);
-      console.log(data[0])
       onToggle()
     })
   },[change])
   if (!recipe){
-    return <></>
+    return <h1>No Matches</h1>
   }
-
+  console.log(recipe)
   const clickNewRecipe = () => {
     setChange((cur) => !cur)
     onToggle();
@@ -57,52 +60,10 @@ const RandomRecipe = () => {
     }
     return ans;
   }
-
   return (
     <>
-      <SlideFade in={isOpen} offsetY='20px' >
-      <VStack mt={20} h="full">
-        <Heading>Recipe: {recipe.recipeName}</Heading>
-        <Divider pt={3} width="2xl" />
-        <Box
-          w="2xl"
-          maxW="2xl"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-        >
-          <VStack m={4} alignItems="left">
-            <Heading pb={3} size="sm">
-              Time to prepare: {recipe.timeToCook}
-            </Heading>
-            <Divider width="xl" />
-            <Heading pt={3} size="sm">
-              Ingredients:
-            </Heading>
-            <UnorderedList pl={4}>
-              {listIngredients()}
-            </UnorderedList>
-            <Divider width="xl" />
-            <Heading size="sm">Instructions:</Heading>
-            <Textarea
-              isReadOnly
-              ref={InstructionsRef}
-              variant="outline"
-              resize="vertical"
-              h="auto"
-              minH="unset"
-              overflow="hidden"
-              w="100%"
-              minRows={1}
-              autoGrow={2}
-              height="270px"
-            >{recipe.instructions}
-            </Textarea>
-          </VStack>
-        </Box>
-      </VStack>
-      </SlideFade>
-      <BottomNavbar clickNewRecipe={clickNewRecipe} />
+      <RecipeDisplay recipe={recipe}/>
+      <BottomNavbar clickNewRecipe={clickNewRecipe}/>
       
     </>
   );

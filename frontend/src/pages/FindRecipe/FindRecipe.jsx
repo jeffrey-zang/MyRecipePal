@@ -1,5 +1,8 @@
 import {React, useState} from 'react'
-
+import axios from "axios";
+import {Link, useNavigate} from 'react-router-dom';
+import RecipeDisplay from '../../components/RecipeDisplay';
+import BottomNavbar from '../../components/BottomNavbar';
 import {
     FormControl,
     FormLabel,
@@ -28,9 +31,73 @@ const AddRecipe = () => {
     const handleInputChange = (e) => setInput(e.target.value)
 
     const isError = input === ''
+    const [modeRandom, setModeRandom] = useState(false);
+    const [numServings, setNumServings] = useState(0);
+    const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
+    const [calories, setCalories] = useState("0");
+    const [protein, setProtein] = useState("0");
+    const [carbohydrates, setCarbohydrates] = useState("0");
+    const [cookingTime, setCookingTime] = useState("0");
+    const [recipes, setRecipes] = useState([]);
+    const navigate = useNavigate();
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    // let 
-  
+    // Example POST method implementation:
+    async function postData(url = '', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return response.json(); // parses JSON response into native JavaScript objects
+    }
+
+    const submitData = () => {
+        let data = {
+        numServings:numServings,
+        dietaryRestrictions: dietaryRestrictions,
+        calories: calories,
+        protein: protein,
+        carbohydrates: carbohydrates,
+        cookingTime: cookingTime,
+        };
+        const headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Content-Type": "application/json",
+        };
+        postData('http://localhost:3001/random', data)
+            .then((data) => {
+            setRecipes(data); // JSON data parsed by `data.json()` call
+            setModeRandom(true);
+        });
+        
+    }
+    const clickNewRecipe = () => {
+        if (currentIndex >= recipes.length - 1) {
+            setCurrentIndex(0);
+        } else {
+            setCurrentIndex((p) => p + 1);
+        }
+    }
+    console.log(recipes);
+    console.log(currentIndex);
+    if (modeRandom) {
+        return (
+        <>
+        <RecipeDisplay  recipe={recipes[currentIndex]}/>
+        <BottomNavbar clickNewRecipe={clickNewRecipe}/>
+        </>);
+    }
     return (
         <>
             <h1 style = {{textAlign: 'center', fontSize: 'max(3vw, 30px)', marginTop:'25px'}}>MyRecipePal Recipe Finder</h1>
@@ -46,6 +113,9 @@ const AddRecipe = () => {
                     keepWithinRange={true}
                     clampValueOnBlur={false}
                     id = 'servings'
+                    onChange={(e) => {
+                        setNumServings(e)
+                    }}
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -58,24 +128,38 @@ const AddRecipe = () => {
                 <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Dietary Restrictions</FormLabel>
                 
                 <Center>
-                <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                    <Checkbox className = 'check'>Vegan</Checkbox>
-                    <Checkbox className = 'check'>Kosher</Checkbox>
-                    <Checkbox className = 'check'>Halal</Checkbox>
-                    <Checkbox className = 'check'>Gluten Intolerance</Checkbox>
-                    <Checkbox className = 'check'>Lactose Intolerance</Checkbox>
+                <Stack spacing={[1, 5]} direction={['column', 'row']} 
+                onChange={(e)=> {
+                    if (e.target.checked) {
+                        setDietaryRestrictions((prev) => [...prev, e.target.value])
+                    } else {
+                        setDietaryRestrictions((prev) => prev.filter ((pre) => pre != e.target.value));
+                    }
+                }}>
+                    <Checkbox className = 'check' value='Vegan'>Vegan</Checkbox>
+                    <Checkbox className = 'check' value='Kosher'>Kosher</Checkbox>
+                    <Checkbox className = 'check' value='Halal'>Halal</Checkbox>
+                    <Checkbox className = 'check' value='Gluten Intolerance'>Gluten Intolerance</Checkbox>
+                    <Checkbox className = 'check' value='Lactose Intolerance'>Lactose Intolerance</Checkbox>
                 </Stack>
                 </Center>
 
                 <FormLabel style = {{textAlign: 'center', fontSize: 'max(1.5vw, 15px)', marginTop:'25px'}}>Allergies</FormLabel>
                 
                 <Center>
-                <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                    <Checkbox className = 'check'>Peanut Butter</Checkbox>
-                    <Checkbox className = 'check'>Shellfish</Checkbox>
-                    <Checkbox className = 'check'>Tree nuts</Checkbox>
-                    <Checkbox className = 'check'>Eggs</Checkbox>
-                    <Checkbox className = 'check'>Fish</Checkbox>
+                <Stack spacing={[1, 5]} direction={['column', 'row']}
+                onChange={(e)=> {
+                    if (e.target.checked) {
+                        setDietaryRestrictions((prev) => [...prev, e.target.value])
+                    } else {
+                        setDietaryRestrictions((prev) => prev.filter ((pre) => pre != e.target.value));
+                    }
+                }}>
+                    <Checkbox className = 'check' value='Peanut Butter'>Peanut Butter</Checkbox>
+                    <Checkbox className = 'check' value='Shellfish'>Shellfish</Checkbox>
+                    <Checkbox className = 'check' value='Tree nuts'>Tree nuts</Checkbox>
+                    <Checkbox className = 'check' value='Eggs'>Eggs</Checkbox>
+                    <Checkbox className = 'check' value='Fish'>Fish</Checkbox>
                 </Stack>
                 </Center>
 
@@ -100,6 +184,9 @@ const AddRecipe = () => {
                 min={0} 
                 max={2000}
                 id = 'cals'
+                onChange={(e) => {
+                    setCalories(e)
+                }}
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -118,6 +205,9 @@ const AddRecipe = () => {
                 min={0} 
                 max={175}
                 id = 'proteins'
+                onChange={(e) => {
+                    setProtein(e)
+                }}
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -136,6 +226,9 @@ const AddRecipe = () => {
                 min={0} 
                 max={325}
                 id = 'carbs'
+                onChange={(e) => {
+                    setCarbohydrates(e)
+                }}
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -154,6 +247,9 @@ const AddRecipe = () => {
                 min={15} 
                 max={300}
                 id = 'time'
+                onChange={(e) => {
+                    setCookingTime(e)
+                }}
                 >
                     <NumberInputField />
                     <NumberInputStepper>
@@ -174,14 +270,7 @@ const AddRecipe = () => {
                         colorScheme='teal'
                         type='submit'
                         marginBottom='25px'
-                        onClick = {() => {
-                            let servings = document.getElementById("servings").value;
-                            let checkmarks = document.getElementsByClassName("check") // use foreach for this
-                            let cals = document.getElementById('cals')
-                            let proteins = document.getElementById('proteins')
-                            let carbs = document.getElementById('carbs')
-                            let time = document.getElementById('time')
-                        }}
+                        onClick={submitData}
                         >
                         Give me my recipe!
                     </Button>
