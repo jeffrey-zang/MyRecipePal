@@ -6,10 +6,8 @@ import Navbar from "./components/Navbar";
 import Recipes from './pages/Recipes.jsx';
 import AddRecipe from './pages/AddRecipe/AddRecipe.jsx';
 import Signin from './pages/SigninSignup/Signin.jsx';
-import Signup from "./pages/SigninSignup/Signup.jsx"
-import Recipes from './pages/Recipes.jsx'
-import AddRecipe from './pages/AddRecipe/AddRecipe'
-import NotFound from './pages/NotFound'
+import Signup from "./pages/SigninSignup/Signup.jsx";
+import NotFound from './pages/NotFound';
 import RandomRecipe from "./pages/RandomRecipe.jsx";
 
 import Footer from './components/Footer/Footer.jsx'
