@@ -198,7 +198,6 @@ const AddRecipe = () => {
               <InputLeftAddon children="Name" w="40%" />
               <Input type="text" />
             </InputGroup>
-
             <InputGroup>
               <InputLeftAddon children="Amount (g)" w="40%" />
               <Input type="number" />
