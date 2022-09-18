@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.837f11a6.css",
-    "main.js": "/static/js/main.6f71742f.js",
-    "static/media/diet.png": "/static/media/diet.3f5da61440a57f08ee79.png",
-    "static/media/logo.png": "/static/media/logo.d23b276398a64a49bee6.png",
-    "static/media/question.png": "/static/media/question.816bd48ed4f1adf3299b.png",
-    "index.html": "/index.html",
-    "main.837f11a6.css.map": "/static/css/main.837f11a6.css.map",
-    "main.6f71742f.js.map": "/static/js/main.6f71742f.js.map"
+    "main.css": "/MyRecipePal/static/css/main.e74bf6bb.css",
+    "main.js": "/MyRecipePal/static/js/main.6ddae862.js",
+    "static/media/diet.png": "/MyRecipePal/static/media/diet.3f5da61440a57f08ee79.png",
+    "static/media/logo.png": "/MyRecipePal/static/media/logo.d23b276398a64a49bee6.png",
+    "static/media/question.png": "/MyRecipePal/static/media/question.816bd48ed4f1adf3299b.png",
+    "index.html": "/MyRecipePal/index.html",
+    "main.e74bf6bb.css.map": "/MyRecipePal/static/css/main.e74bf6bb.css.map",
+    "main.6ddae862.js.map": "/MyRecipePal/static/js/main.6ddae862.js.map"
   },
   "entrypoints": [
-    "static/css/main.837f11a6.css",
-    "static/js/main.6f71742f.js"
+    "static/css/main.e74bf6bb.css",
+    "static/js/main.6ddae862.js"
   ]
 }
