@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer.jsx'
 
 function App() {
   let Component 
+  let footer = <Footer/>;
   switch (window.location.pathname) {
     case '/MyRecipePal/':
       Component = Home
@@ -27,6 +28,7 @@ function App() {
       break  
     case "/MyRecipePal/recipe":
       Component = RandomRecipe;
+      footer = null;
       break;
     default:
       Component = NotFound
@@ -37,7 +39,7 @@ function App() {
     <>
     <Navbar/>
     <Component/>
-    <Footer/>
+    <footer/>
     </>
   );
 }

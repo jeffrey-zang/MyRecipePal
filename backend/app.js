@@ -29,6 +29,9 @@ const Recipe = sequelize.define("recipe", {
     autoIncrement: true,
     primaryKey: true,
   },
+  recipeName: {
+    type: Sequelize.TEXT,
+  },
   ingredientNames: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
   },

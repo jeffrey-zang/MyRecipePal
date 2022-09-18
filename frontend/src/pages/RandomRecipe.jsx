@@ -31,6 +31,7 @@ const RandomRecipe = () => {
       return response.json()
     }).then((data) => {
       setRecipe(data[0]);
+      console.log(data[0])
       onToggle()
     })
   },[change])
@@ -43,11 +44,25 @@ const RandomRecipe = () => {
     onToggle();
   }
   
+  const listIngredients = () => {
+    if(!recipe.ingredientNames) return;
+    let len = recipe.ingredientNames.length;
+    let ans;
+    for (let i = 0; i < len; i++) {
+      ans = <div>{ans} 
+        <listItem>
+        {recipe.ingredientAmounts[i]} {recipe.ingredientNames[i]}, {recipe.ingredientCosts[i]}$
+        </listItem>
+      </div>
+    }
+    return ans;
+  }
+
   return (
     <>
-      <SlideFade in={isOpen} offsetY='20px'>
+      <SlideFade in={isOpen} offsetY='20px' >
       <VStack mt={20} h="full">
-        <Heading>Recipe: {recipe.name}</Heading>
+        <Heading>Recipe: {recipe.recipeName}</Heading>
         <Divider pt={3} width="2xl" />
         <Box
           w="2xl"
@@ -58,15 +73,14 @@ const RandomRecipe = () => {
         >
           <VStack m={4} alignItems="left">
             <Heading pb={3} size="sm">
-              Time to prepare:
+              Time to prepare: {recipe.timeToCook}
             </Heading>
             <Divider width="xl" />
             <Heading pt={3} size="sm">
               Ingredients:
             </Heading>
             <UnorderedList pl={4}>
-              <ListItem>chicken (200g)</ListItem>
-              <ListItem>Cat</ListItem>
+              {listIngredients()}
             </UnorderedList>
             <Divider width="xl" />
             <Heading size="sm">Instructions:</Heading>
@@ -81,13 +95,14 @@ const RandomRecipe = () => {
               w="100%"
               minRows={1}
               autoGrow={2}
-            >recipe.instructions
+              height="270px"
+            >{recipe.instructions}
             </Textarea>
           </VStack>
         </Box>
       </VStack>
       </SlideFade>
-      <BottomNavbar clickNewRecipe={clickNewRecipe}/>
+      <BottomNavbar clickNewRecipe={clickNewRecipe} />
       
     </>
   );
