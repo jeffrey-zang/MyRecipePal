@@ -47,7 +47,9 @@ const AddRecipe = () => {
     e.preventDefault();
     let recipeData = {
       recipeName: recipeName,
-      ingredients: [],
+      ingredientNames: [],
+      ingredientAmounts: [],
+      ingredientCosts: [],
       nutrition: {
         calories: calories,
         protein: protein,
@@ -67,26 +69,23 @@ const AddRecipe = () => {
       // Loop through each cell of curr row to read cell value
       for (let j = 0; j < objCells.length; j++) {
         if (j === 0) {
-          console.log();
-          ingredientObject.ingredientName = objCells.item(j).children[0].value;
+          recipeData.ingredientNames.push(objCells.item(j).children[0].value);
         } else if (j === 1) {
-          ingredientObject.ingredientAmount =
-            objCells.item(j).children[0].value;
+          recipeData.ingredientAmounts.push(objCells.item(j).children[0].value);
         } else {
-          ingredientObject.ingredientCost = objCells.item(j).children[0].values;
+          recipeData.ingredientCosts.push(objCells.item(j).children[0].value);
         }
       }
-      recipeData.ingredients.push(ingredientObject);
-      ingredientObject = {};
     }
     setRecipe(recipeData);
-    axios.post("http://localhost:3001/add", recipeData);
+    console.log(recipe);
+    const headers = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Content-Type": "application/json",
+    };
+    axios.post("http://localhost:3001/add", recipe, { headers });
   };
-
-  // const handleInputChange = (e) => setRecipeName(e.target.value);
-
-  const recipeNameError = recipeName === "";
-  // const ingredientsError = ingredients === [];
 
   return (
     <>

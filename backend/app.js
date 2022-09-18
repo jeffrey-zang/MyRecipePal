@@ -1,5 +1,7 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 
 const port = 3001;
 const host = "127.0.0.1";
@@ -80,6 +82,8 @@ app.get("/random", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   Recipe.sync({
     force: false,
   })
