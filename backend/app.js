@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-
+const { Op } = require("sequelize");
 const port = 3001;
 const host = "127.0.0.1";
 
@@ -31,6 +31,21 @@ const Recipe = sequelize.define("recipe", {
     autoIncrement: true,
     primaryKey: true,
   },
+  numServings: {
+    type: Sequelize.INTEGER,
+  },
+  dietaryRestrictions: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  calories: {
+    type: Sequelize.INTEGER,
+  },
+  protein: {
+    type: Sequelize.INTEGER,
+  },
+  carbohydrates: {
+    type: Sequelize.INTEGER,
+  },
   recipeName: {
     type: Sequelize.TEXT,
   },
@@ -50,7 +65,7 @@ const Recipe = sequelize.define("recipe", {
     type: Sequelize.TEXT,
   },
   timeToCook: {
-    type: Sequelize.TEXT,
+    type: Sequelize.INTEGER,
   },
 });
 
@@ -67,18 +82,27 @@ app.get("/list", (req, res) => {
     });
 });
 
-app.get("/random", (req, res) => {
+app.post("/random", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   Recipe.sync({
     force: false,
-  })
-    .then(() => {
-      return Recipe.findAll({ order: Sequelize.literal("random()"), limit: 1 });
-    })
-    .then((recipe) => {
-      res.send(recipe);
+  }).then(() => {
+    return Recipe.findAll({ 
+      // where: {
+      //   numServings: req.body.numServings,
+      //    [Op.not]: {dietaryRestrictions: {[Op.overlap]: req.body.dietaryRestrictions}},
+      //   calories: {[Op.between]: [1, req.body.calories] },
+      //   protein: {[Op.between]: [1, req.body.protein] },
+      //   carbohydrates: {[Op.between]: [1, req.body.carbohydrates] },
+      //   timeToCook: {[Op.between]: [1, req.body.cookingTime] },
+      // },
+      order: Sequelize.literal("random()"), 
+      limit: 1 
     });
+  }).then((recipe) => {
+    res.send(recipe);
+  });
 });
 
 app.post("/add", (req, res) => {
@@ -97,6 +121,11 @@ app.post("/add", (req, res) => {
           nutrition: req.body.nutrition,
           instructions: req.body.instructions,
           timeToCook: req.body.timeToCook,
+          "numServings": req.body.numServings,
+          "dietaryRestrictions": req.body.dietaryRestrictions,
+          "calories": req.body.calories,
+          "protein": req.body.protein,
+          "carbohydrates": req.body.carbohydrates,
         },
       ]);
     })
