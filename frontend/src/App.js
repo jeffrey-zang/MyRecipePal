@@ -3,6 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home/Home.jsx";
 import FindRecipe from "./pages/FindRecipe/FindRecipe.jsx";
 import Navbar from "./components/Navbar";
+import Recipes from './pages/Recipes.jsx';
+import AddRecipe from './pages/AddRecipe/AddRecipe.jsx';
+import Signin from './pages/SigninSignup/Signin.jsx';
+import Signup from "./pages/SigninSignup/Signup.jsx"
 import Recipes from './pages/Recipes.jsx'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import NotFound from './pages/NotFound'
@@ -24,10 +28,16 @@ function App() {
       break
     case '/MyRecipePal/findrecipe':
       Component = FindRecipe
-      break  
+      break
+    case "/signin":
+      Component = Signin
+      break
+    case "/signup":
+      Component = Signup
+      break
     case "/MyRecipePal/recipe":
-      Component = RandomRecipe;
-      break;
+      Component = RandomRecipe
+      break
     default:
       Component = NotFound
       break
