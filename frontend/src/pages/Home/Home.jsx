@@ -15,9 +15,9 @@ const Home = () => {
         <Center><img className = 'logo' src = {logo} alt = 'logo'></img></Center>
         <h1 style = {{fontSize: 'max(3vw, 30px)'}}>Unlock your inner chef</h1>
         <Center>
-            <Button size = 'lg' onClick={() => {window.location.href='/MyRecipePal/findrecipe'}} colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
+            <Button size = 'lg' onClick={() => {window.location.href='/findrecipe'}} colorScheme='green' marginTop = '25px' marginBottom = '-20px'>Get Started</Button>
         </Center>
-        <Button size = 'lg' colorScheme='green' onClick={() => {window.location.href='/MyRecipePal/addrecipe'}}>Post a Recipe</Button>
+        <Button size = 'lg' colorScheme='green' onClick={() => {window.location.href='/addrecipe'}}>Post a Recipe</Button>
     </div>
     <div className = 'container' style = {{padding: '0px 80px', color: '#fff'}}>
         Our Inspiration

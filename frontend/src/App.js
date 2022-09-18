@@ -16,25 +16,25 @@ function App() {
   let Component 
   let footer = <Footer/>;
   switch (window.location.pathname) {
-    case '/MyRecipePal/':
+    case '/':
       Component = Home
       break
-    case '/MyRecipePal/recipes':
+    case '/recipes':
       Component = Recipes
       break
-    case '/MyRecipePal/addrecipe':
+    case '/addrecipe':
       Component = AddRecipe
       break
-    case '/MyRecipePal/findrecipe':
+    case '/findrecipe':
       Component = FindRecipe
       break
-    case "/MyRecipePal/signin":
+    case "/signin":
       Component = Signin
       break
-    case "/MyRecipePal/signup":
+    case "/signup":
       Component = Signup
       break
-    case "/MyRecipePal/recipe":
+    case "/recipe":
       Component = RandomRecipe
       break
     default:

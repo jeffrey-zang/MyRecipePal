@@ -11,7 +11,7 @@ const AddRecipe = () => {
       leftIcon={<AddIcon />}
       variant="outline"
       alignSelf='center'
-      onClick={() => {window.location.href='/MyRecipePal/addrecipe'}}
+      onClick={() => {window.location.href='/addrecipe'}}
     >
       Add Recipe
     </Button>
