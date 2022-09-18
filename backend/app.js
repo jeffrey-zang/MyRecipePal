@@ -89,16 +89,15 @@ app.post("/random", (req, res) => {
     force: false,
   }).then(() => {
     return Recipe.findAll({ 
-      // where: {
-      //   numServings: req.body.numServings,
-      //    [Op.not]: {dietaryRestrictions: {[Op.overlap]: req.body.dietaryRestrictions}},
-      //   calories: {[Op.between]: [1, req.body.calories] },
-      //   protein: {[Op.between]: [1, req.body.protein] },
-      //   carbohydrates: {[Op.between]: [1, req.body.carbohydrates] },
-      //   timeToCook: {[Op.between]: [1, req.body.cookingTime] },
-      // },
-      order: Sequelize.literal("random()"), 
-      limit: 1 
+      where: {
+        numServings: req.body.numServings,
+         [Op.not]: {dietaryRestrictions: {[Op.overlap]: req.body.dietaryRestrictions}},
+        calories: {[Op.between]: [1, req.body.calories] },
+        protein: {[Op.between]: [1, req.body.protein] },
+        carbohydrates: {[Op.between]: [1, req.body.carbohydrates] },
+        timeToCook: {[Op.between]: [1, req.body.cookingTime] },
+      },
+      order: Sequelize.literal("random()")
     });
   }).then((recipe) => {
     res.send(recipe);

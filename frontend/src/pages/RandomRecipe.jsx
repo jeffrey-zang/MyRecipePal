@@ -15,8 +15,11 @@ import React, { useEffect, useState, useRef } from "react";
 import autosize from "autosize";
 import BottomNavbar from "../components/BottomNavbar";
 import { useDisclosure, Fade, ScaleFade, Slide, SlideFade } from '@chakra-ui/react'
+import {useLocation} from 'react-router-dom';
 
 const RandomRecipe = () => {
+  const location = useLocation();
+  console.log(location.state.name)
   const { isOpen, onToggle } = useDisclosure();
   const InstructionsRef = useRef();
   const [recipe, setRecipe] = useState();
@@ -60,7 +63,7 @@ const RandomRecipe = () => {
   return (
     <>
       <RecipeDisplay recipe={recipe}/>
-      <BottomNavbar clickNewRecipe={clickNewRecipe} listIngredients={listIngredients}/>
+      <BottomNavbar clickNewRecipe={clickNewRecipe}/>
       
     </>
   );

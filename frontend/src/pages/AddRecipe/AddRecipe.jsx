@@ -33,6 +33,8 @@ const AddRecipe = () => {
   const [instructions, setInstructions] = useState("");
   const [timeToCook, setTimeToCook] = useState();
   const [recipe, setRecipe] = useState();
+  const [numServings, setNumServings] = useState(0);
+  const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
 
   const instructionsRef = useRef();
 
@@ -50,13 +52,13 @@ const AddRecipe = () => {
       ingredientNames: [],
       ingredientAmounts: [],
       ingredientCosts: [],
-      nutrition: {
-        calories: calories,
-        protein: protein,
-        carbs: carbs,
-      },
+      calories: calories,
+      protein: protein,
+      carbohydrates: carbs,
       instructions: instructions,
       timeToCook: timeToCook,
+      numServings: numServings,
+      dietaryRestrictions: []
     };
 
     let ingredientObject = {};
@@ -203,6 +205,19 @@ const AddRecipe = () => {
             </InputGroup>
           </Stack>
         </Center> */}
+        <Center>
+          <Stack spacing={4}>
+        <InputGroup>
+          <InputLeftAddon children="# of Servings" w="50%" />
+          <Input
+            type="number"
+            onChange={(e) => {
+              setNumServings(e.target.value);
+            }}
+          />
+        </InputGroup>
+        </Stack>
+        </Center>
 
         <FormLabel
           style={{

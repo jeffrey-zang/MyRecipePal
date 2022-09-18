@@ -1,5 +1,8 @@
 import {React, useState} from 'react'
 import axios from "axios";
+import {Link, useNavigate} from 'react-router-dom';
+import RecipeDisplay from '../../components/RecipeDisplay';
+import BottomNavbar from '../../components/BottomNavbar';
 import {
     FormControl,
     FormLabel,
@@ -28,13 +31,16 @@ const AddRecipe = () => {
     const handleInputChange = (e) => setInput(e.target.value)
 
     const isError = input === ''
-    
+    const [modeRandom, setModeRandom] = useState(false);
     const [numServings, setNumServings] = useState(0);
     const [dietaryRestrictions, setDietaryRestrictions] = useState([]);
     const [calories, setCalories] = useState("0");
     const [protein, setProtein] = useState("0");
     const [carbohydrates, setCarbohydrates] = useState("0");
     const [cookingTime, setCookingTime] = useState("0");
+    const [recipes, setRecipes] = useState([]);
+    const navigate = useNavigate();
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     // Example POST method implementation:
     async function postData(url = '', data = {}) {
@@ -71,11 +77,27 @@ const AddRecipe = () => {
         };
         postData('http://localhost:3001/random', data)
             .then((data) => {
-            console.log(data); // JSON data parsed by `data.json()` call
+            setRecipes(data); // JSON data parsed by `data.json()` call
+            setModeRandom(true);
         });
+        
     }
-    // let 
-  
+    const clickNewRecipe = () => {
+        if (currentIndex >= recipes.length - 1) {
+            setCurrentIndex(0);
+        } else {
+            setCurrentIndex((p) => p + 1);
+        }
+    }
+    console.log(recipes);
+    console.log(currentIndex);
+    if (modeRandom) {
+        return (
+        <>
+        <RecipeDisplay  recipe={recipes[currentIndex]}/>
+        <BottomNavbar clickNewRecipe={clickNewRecipe}/>
+        </>);
+    }
     return (
         <>
             <h1 style = {{textAlign: 'center', fontSize: 'max(3vw, 30px)', marginTop:'25px'}}>MyRecipePal Recipe Finder</h1>
