@@ -29,26 +29,23 @@ const Recipe = sequelize.define("recipe", {
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
-    type: Sequelize.TEXT,
+  ingredientNames: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
   },
-  recipeContent: {
+  ingredientAmounts: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  ingredientCosts: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  nutrition: {
     type: Sequelize.JSON,
   },
-});
-
-// Creates people table
-const User = sequelize.define("user", {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  username: {
+  instructions: {
     type: Sequelize.TEXT,
   },
-  password: {
-    type: Sequelize.INTEGER,
+  timeToCook: {
+    type: Sequelize.TEXT,
   },
 });
 
@@ -72,7 +69,7 @@ app.get("/random", (req, res) => {
     force: false,
   })
     .then(() => {
-      return Recipe.findAll({ order: Sequelize.literal('random()'), limit: 1 });
+      return Recipe.findAll({ order: Sequelize.literal("random()"), limit: 1 });
     })
     .then((recipe) => {
       res.send(recipe);
@@ -86,8 +83,13 @@ app.post("/add", (req, res) => {
     .then(() => {
       return Recipe.bulkCreate([
         {
-          name: req.body.name,
-          recipeContent: req.body.recipeContent,
+          recipeName: req.body.recipeName,
+          ingredientNames: req.body.ingredientNames,
+          ingredientAmounts: req.body.ingredientAmounts,
+          ingredientCosts: req.body.ingredientCosts,
+          nutrition: req.body.nutrition,
+          instructions: req.body.instructions,
+          timeToCook: req.body.timeToCook,
         },
       ]);
     })
