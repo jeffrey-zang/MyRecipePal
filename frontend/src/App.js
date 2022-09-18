@@ -28,7 +28,6 @@ function App() {
       break  
     case "/MyRecipePal/recipe":
       Component = RandomRecipe;
-      footer = null;
       break;
     default:
       Component = NotFound
