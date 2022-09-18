@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer.jsx'
 
 function App() {
   let Component 
+  let footer = <Footer/>;
   switch (window.location.pathname) {
     case '/MyRecipePal/':
       Component = Home
@@ -45,7 +46,7 @@ function App() {
     <>
     <Navbar/>
     <Component/>
-    <Footer/>
+    <footer/>
     </>
   );
 }
