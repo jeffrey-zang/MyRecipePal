@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MyRecipePal/static/css/main.e74bf6bb.css",
+    "main.js": "/MyRecipePal/static/js/main.bf027ace.js",
+    "static/media/diet.png": "/MyRecipePal/static/media/diet.3f5da61440a57f08ee79.png",
+    "static/media/logo.png": "/MyRecipePal/static/media/logo.d23b276398a64a49bee6.png",
+    "static/media/question.png": "/MyRecipePal/static/media/question.816bd48ed4f1adf3299b.png",
+    "index.html": "/MyRecipePal/index.html",
+    "main.e74bf6bb.css.map": "/MyRecipePal/static/css/main.e74bf6bb.css.map",
+    "main.bf027ace.js.map": "/MyRecipePal/static/js/main.bf027ace.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e74bf6bb.css",
+    "static/js/main.bf027ace.js"
+  ]
+}

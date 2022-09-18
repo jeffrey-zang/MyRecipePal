@@ -1,0 +1,13 @@
+.footer {
+    background-color: #111;
+    padding: 15px 20vw;
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3vw !important;
+}

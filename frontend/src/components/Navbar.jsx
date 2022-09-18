@@ -16,6 +16,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
+import AddRecipe from "./AddRecipeButton.jsx";
+import SearchBar from "./SearchBar";
+
+import logo from '../assets/logo.png'
 
 const LinkItem = ({ href, children }) => {
   return (
@@ -25,6 +29,7 @@ const LinkItem = ({ href, children }) => {
       _hover={{
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
+        color: 'black'
       }}
       href={href}
     >
@@ -38,21 +43,30 @@ const searchBar = () => {};
 const Navbar = () => {
   return (
     <>
-      <Box bg="green.400" css={{ backdropFilter: "blur(10px)", color: '#fff' }} px={4}>
+      <Box
+        bg="green.400"
+        css={{ backdropFilter: "blur(10px)", color: "#fff" }}
+        px={4}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Heading as="h1" size="lg">
-            Logo
-          </Heading>
+          <a href = '/MyRecipePal/'>
+            <Avatar name = 'yes' src = {logo} alt = 'logo'/>
+          </a>
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <LinkItem href="/">
-                <Text>
+
+              <SearchBar />
+
+              <AddRecipe/>
+
+              <LinkItem href="/MyRecipePal/">
                   Home
-                </Text>
               </LinkItem>
 
-              <LinkItem href="/recipes">Browse</LinkItem>
+              <LinkItem href="/MyRecipePal/recipes">Browse</LinkItem>
+
+              <LinkItem href="/MyRecipePal/findrecipe">Find a Recipe</LinkItem>
 
               <Menu>
                 <MenuButton
@@ -67,7 +81,7 @@ const Navbar = () => {
                     src={"https://avatars.dicebear.com/api/male/username.svg"}
                   />
                 </MenuButton>
-                <MenuList alignItems={"center"} color='black'>
+                <MenuList alignItems={"center"} color="black">
                   <br />
                   <Center>
                     <Avatar

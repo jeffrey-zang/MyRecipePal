@@ -1,5 +1,7 @@
 {
+  "homepage": "https://jeffrey-zang.github.io/MyRecipePal/",
   "devDependencies": {
     "react-router-dom": "^6.4.0"
   }
 }
+  
