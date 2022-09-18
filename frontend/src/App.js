@@ -13,19 +13,19 @@ import Footer from './components/Footer/Footer.jsx'
 function App() {
   let Component 
   switch (window.location.pathname) {
-    case 'MyRecipePal/':
+    case '/MyRecipePal/':
       Component = Home
       break
-    case 'MyRecipePal/recipes':
+    case '/MyRecipePal/recipes':
       Component = Recipes
       break
-    case 'MyRecipePal/addrecipe':
+    case '/MyRecipePal/addrecipe':
       Component = AddRecipe
       break
-    case 'MyRecipePal/findrecipe':
+    case '/MyRecipePal/findrecipe':
       Component = FindRecipe
       break  
-    case "MyRecipePal/recipe":
+    case "/MyRecipePal/recipe":
       Component = RandomRecipe;
       break;
     default:

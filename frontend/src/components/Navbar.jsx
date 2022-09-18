@@ -49,7 +49,7 @@ const Navbar = () => {
         px={4}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <a href = '/'>
+          <a href = '/MyRecipePal/'>
             <Avatar name = 'yes' src = {logo} alt = 'logo'/>
           </a>
 
@@ -60,13 +60,13 @@ const Navbar = () => {
 
               <AddRecipe/>
 
-              <LinkItem href="/">
+              <LinkItem href="/MyRecipePal/">
                   Home
               </LinkItem>
 
-              <LinkItem href="/recipes">Browse</LinkItem>
+              <LinkItem href="/MyRecipePal/recipes">Browse</LinkItem>
 
-              <LinkItem href="/findrecipe">Find a Recipe</LinkItem>
+              <LinkItem href="/MyRecipePal/findrecipe">Find a Recipe</LinkItem>
 
               <Menu>
                 <MenuButton
