@@ -27,10 +27,10 @@ function App() {
     case '/MyRecipePal/findrecipe':
       Component = FindRecipe
       break
-    case "/signin":
+    case "/MyRecipePal/signin":
       Component = Signin
       break
-    case "/signup":
+    case "/MyRecipePal/signup":
       Component = Signup
       break
     case "/MyRecipePal/recipe":
