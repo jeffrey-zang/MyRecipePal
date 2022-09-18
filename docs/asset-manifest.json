@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.ef36ba63.css",
-    "main.js": "/static/js/main.1d63913c.js",
+    "main.css": "/static/css/main.837f11a6.css",
+    "main.js": "/static/js/main.6f71742f.js",
     "static/media/diet.png": "/static/media/diet.3f5da61440a57f08ee79.png",
     "static/media/logo.png": "/static/media/logo.d23b276398a64a49bee6.png",
     "static/media/question.png": "/static/media/question.816bd48ed4f1adf3299b.png",
     "index.html": "/index.html",
-    "main.ef36ba63.css.map": "/static/css/main.ef36ba63.css.map",
-    "main.1d63913c.js.map": "/static/js/main.1d63913c.js.map"
+    "main.837f11a6.css.map": "/static/css/main.837f11a6.css.map",
+    "main.6f71742f.js.map": "/static/js/main.6f71742f.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef36ba63.css",
-    "static/js/main.1d63913c.js"
+    "static/css/main.837f11a6.css",
+    "static/js/main.6f71742f.js"
   ]
 }
