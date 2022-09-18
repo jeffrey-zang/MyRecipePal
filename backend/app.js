@@ -23,43 +23,73 @@ const sequelize = new Sequelize({
   },
 });
 
-// Creates people table
-const User = sequelize.define("user", {
+const Recipe = sequelize.define("recipe", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  username: {
+  ingredientNames: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  ingredientAmounts: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  ingredientCosts: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+  },
+  nutrition: {
+    type: Sequelize.JSON,
+  },
+  instructions: {
     type: Sequelize.TEXT,
   },
-  password: {
-    type: Sequelize.INTEGER,
+  timeToCook: {
+    type: Sequelize.TEXT,
   },
 });
 
 // force: true -> delete whole table, and recreate new one. force: false, just alters (?)
 app.get("/list", (req, res) => {
-  User.sync({
+  Recipe.sync({
     force: false,
   })
     .then(() => {
-      return User.findAll();
+      return Recipe.findAll();
     })
-    .then((user) => {
-      res.send(user);
+    .then((recipe) => {
+      res.send(recipe);
+    });
+});
+
+app.get("/random", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  Recipe.sync({
+    force: false,
+  })
+    .then(() => {
+      return Recipe.findAll({ order: Sequelize.literal("random()"), limit: 1 });
+    })
+    .then((recipe) => {
+      res.send(recipe);
     });
 });
 
 app.post("/add", (req, res) => {
-  User.sync({
+  Recipe.sync({
     force: false,
   })
     .then(() => {
-      return User.bulkCreate([
+      return Recipe.bulkCreate([
         {
-          username: req.body.username,
-          password: req.body.password,
+          recipeName: req.body.recipeName,
+          ingredientNames: req.body.ingredientNames,
+          ingredientAmounts: req.body.ingredientAmounts,
+          ingredientCosts: req.body.ingredientCosts,
+          nutrition: req.body.nutrition,
+          instructions: req.body.instructions,
+          timeToCook: req.body.timeToCook,
         },
       ]);
     })
@@ -67,12 +97,12 @@ app.post("/add", (req, res) => {
       console.error("error:- ", err.message);
     });
 
-  res.send("Users created with Name:- " + req.body.username);
+  res.send("Recipes created with Name:- " + req.body.name);
 });
 
 app.post("/delete", (req, res) => {
-  User.drop();
-  res.send("Users table dropped");
+  Recipe.drop();
+  res.send("Recipe table dropped");
 });
 
 app.listen(port, host, () => {
